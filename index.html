@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONARCH TERMINAL // ACADEMIC HUB</title>
+    <title>CA-KSEP // Learning Materials</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,13 +73,10 @@
                     LOCAL INSTANCE ONLINE
                 </span>
                 <span class="text-gray-600">|</span>
-                <span><span class="text-gold">MONARCH:</span> v4.4.0</span>
-                <span class="hidden md:inline"><span class="text-gray-500">STORAGE:</span> ISOLATED DEVICE DB</span>
+                <span class="hidden md:inline"><span class="text-gray-500">STORAGE:</span> LOCAL DEVICE DB</span>
             </div>
             <div class="flex items-center space-x-4">
-                <span>AUTHOR: <strong class="text-gray-200">STI-ITB CLASS DESK</strong></span>
-                <span class="text-gray-600">|</span>
-                <span id="current-time" class="text-gold">SEP 23, 2026 • 21:30:00 WIB</span>
+                <span>AUTHOR: <strong class="text-gray-200">Petrus Krishna S. 18226026</strong></span>
             </div>
         </div>
 
@@ -93,7 +90,7 @@
                 </div>
                 <div>
                     <h1 class="font-serif text-base sm:text-lg tracking-wider font-semibold text-white uppercase flex items-center gap-2">
-                        Monarch Terminal <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-gold/10 text-gold border border-gold/30 hidden sm:inline-block">ACADEMIC HUB</span>
+                        CA-KSEP <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-gold/10 text-gold border border-gold/30 hidden sm:inline-block">ACADEMIC HUB</span>
                     </h1>
                     <p class="text-[11px] text-gray-400 tracking-tight">EXECUTIVE INTELLIGENCE & ASSESSMENT ENGINE</p>
                 </div>
@@ -415,17 +412,7 @@
             renderQuizList();
             loadQuiz(0);
             updateDashboardMetrics();
-            startClock();
         };
-
-        function startClock() {
-            setInterval(() => {
-                const now = new Date();
-                const formatted = now.toISOString().replace('T', ' ').substring(0, 19) + ' WIB';
-                const elem = document.getElementById('current-time');
-                if (elem) elem.innerText = formatted;
-            }, 1000);
-        }
 
         function updateDashboardMetrics() {
             // Material Counts & Progress
