@@ -34,17 +34,16 @@
         }
     </script>
     <style>
-        /* Custom Terminal Custom Styling */
         ::-webkit-scrollbar {
-            width: 5px;
-            height: 5px;
+            width: 6px;
+            height: 6px;
         }
         ::-webkit-scrollbar-track {
             background: #0a0c10;
         }
         ::-webkit-scrollbar-thumb {
             background: #222733;
-            border-radius: 2px;
+            border-radius: 3px;
         }
         ::-webkit-scrollbar-thumb:hover {
             background: #d4af37;
@@ -53,9 +52,6 @@
             background: linear-gradient(135deg, #fff2cc 0%, #d4af37 50%, #aa820a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-        }
-        .gold-border-glow {
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.12);
         }
         .terminal-grid {
             background-size: 30px 30px;
@@ -68,23 +64,22 @@
 <body class="h-full flex flex-col font-sans terminal-grid antialiased selection:bg-gold selection:text-black">
 
     <!-- TOP EXECUTIVE DASHBOARD -->
-    <header class="bg-obsidian-card border-b border-obsidian-border sticky top-0 z-50 text-xs font-mono">
+    <header class="bg-obsidian-card border-b border-obsidian-border sticky top-0 z-40 text-xs font-mono">
         <!-- Ticker Tape Bar -->
-        <div class="bg-[#050608] border-b border-obsidian-border/50 py-1 px-4 overflow-x-auto whitespace-nowrap flex items-center justify-between text-[11px] text-gray-400">
-            <div class="flex items-center space-x-6">
+        <div class="bg-[#050608] border-b border-obsidian-border/50 py-1.5 px-4 overflow-x-auto whitespace-nowrap flex items-center justify-between text-[11px] text-gray-400">
+            <div class="flex items-center space-x-4 sm:space-x-6">
                 <span class="flex items-center text-emerald-400">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse mr-2"></span>
-                    SYSTEM ONLINE
+                    LOCAL INSTANCE ONLINE
                 </span>
-                <span class="text-gray-500">|</span>
-                <span><span class="text-gold">MONARCH:</span> v4.2.0-ULTRA</span>
-                <span class="hidden md:inline"><span class="text-gray-500">SECURITY:</span> LEVEL-9 ENCRYPTED</span>
-                <span class="hidden lg:inline"><span class="text-gray-500">LATENCY:</span> 12ms</span>
+                <span class="text-gray-600">|</span>
+                <span><span class="text-gold">MONARCH:</span> v4.3.0</span>
+                <span class="hidden md:inline"><span class="text-gray-500">STORAGE:</span> ISOLATED DEVICE DB</span>
             </div>
             <div class="flex items-center space-x-4">
                 <span>AUTHOR: <strong class="text-gray-200">STI-ITB CLASS DESK</strong></span>
-                <span class="text-gray-500">|</span>
-                <span id="current-time" class="text-gold">SEP 23, 2026 • 20:45:12 WIB</span>
+                <span class="text-gray-600">|</span>
+                <span id="current-time" class="text-gold">SEP 23, 2026 • 21:00:00 WIB</span>
             </div>
         </div>
 
@@ -93,40 +88,44 @@
             
             <!-- Branding -->
             <div class="flex items-center space-x-3">
-                <div class="w-9 h-9 rounded bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center font-serif text-black font-bold text-lg shadow-md border border-gold-light/40">
+                <div class="w-9 h-9 rounded bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center font-serif text-black font-bold text-lg shadow-md border border-gold-light/40 shrink-0">
                     M
                 </div>
                 <div>
-                    <h1 class="font-serif text-lg tracking-wider font-semibold text-white uppercase flex items-center gap-2">
-                        Monarch Terminal <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-gold/10 text-gold border border-gold/30">ACADEMIC HUB</span>
+                    <h1 class="font-serif text-base sm:text-lg tracking-wider font-semibold text-white uppercase flex items-center gap-2">
+                        Monarch Terminal <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-gold/10 text-gold border border-gold/30 hidden sm:inline-block">ACADEMIC HUB</span>
                     </h1>
                     <p class="text-[11px] text-gray-400 tracking-tight">EXECUTIVE INTELLIGENCE & ASSESSMENT ENGINE</p>
                 </div>
             </div>
 
-            <!-- Key Metrics Bar -->
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-4 text-center">
+            <!-- Dashboard Key Metrics Bar -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-center w-full md:w-auto">
                 <div class="bg-obsidian border border-obsidian-border p-2 rounded">
-                    <div class="text-[10px] text-gray-400 tracking-wider">MATERIALS SUMMARY</div>
-                    <div class="text-sm font-bold text-gold" id="total-materials-count">12 Modules</div>
+                    <div class="text-[9px] text-gray-400 tracking-wider uppercase">MATERIALS</div>
+                    <div class="text-xs sm:text-sm font-bold text-gold" id="total-materials-count">2 Modules</div>
                 </div>
                 <div class="bg-obsidian border border-obsidian-border p-2 rounded">
-                    <div class="text-[10px] text-gray-400 tracking-wider">ACTIVE QUIZZES</div>
-                    <div class="text-sm font-bold text-emerald-400" id="total-quizzes-count">8 Active</div>
+                    <div class="text-[9px] text-gray-400 tracking-wider uppercase">ACTIVE QUIZZES</div>
+                    <div class="text-xs sm:text-sm font-bold text-emerald-400" id="total-quizzes-count">2 Active</div>
                 </div>
-                <div class="bg-obsidian border border-obsidian-border p-2 rounded col-span-2 sm:col-span-1">
-                    <div class="text-[10px] text-gray-400 tracking-wider">LAST UPDATED</div>
+                <div class="bg-obsidian border border-obsidian-border p-2 rounded">
+                    <div class="text-[9px] text-gray-400 tracking-wider uppercase">AVG QUIZ SCORE</div>
+                    <div class="text-xs sm:text-sm font-bold text-gold-light" id="dash-avg-score">0.0%</div>
+                </div>
+                <div class="bg-obsidian border border-obsidian-border p-2 rounded">
+                    <div class="text-[9px] text-gray-400 tracking-wider uppercase">LAST UPDATED</div>
                     <div class="text-xs font-semibold text-gray-300 mt-0.5">Sep 23, 2026</div>
                 </div>
             </div>
 
             <!-- Navigation Tabs -->
-            <nav class="flex space-x-1 bg-obsidian p-1 rounded-md border border-obsidian-border">
-                <button id="nav-page-1" onclick="switchPage(1)" class="px-4 py-2 rounded text-xs font-medium font-mono transition-all duration-150 flex items-center gap-2 bg-gold text-black shadow-sm font-bold">
+            <nav class="flex space-x-1 bg-obsidian p-1 rounded-md border border-obsidian-border shrink-0">
+                <button id="nav-page-1" onclick="switchPage(1)" class="flex-1 sm:flex-none px-3.5 py-2 rounded text-xs font-medium font-mono transition-all duration-150 flex items-center justify-center gap-2 bg-gold text-black font-bold">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                     01 // MATERIALS
                 </button>
-                <button id="nav-page-2" onclick="switchPage(2)" class="px-4 py-2 rounded text-xs font-medium font-mono text-gray-400 hover:text-white transition-all duration-150 flex items-center gap-2">
+                <button id="nav-page-2" onclick="switchPage(2)" class="flex-1 sm:flex-none px-3.5 py-2 rounded text-xs font-medium font-mono text-gray-400 hover:text-white transition-all duration-150 flex items-center justify-center gap-2">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                     02 // ASSESSMENT
                 </button>
@@ -140,17 +139,17 @@
         <!-- PAGE 1: MATERIALS SUMMARY -->
         <section id="page-1" class="space-y-6">
             
-            <!-- Executive Summary & Filter Header -->
+            <!-- Summary Header -->
             <div class="bg-obsidian-card border border-obsidian-border rounded-lg p-5">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-obsidian-border">
                     <div>
                         <h2 class="font-serif text-xl text-white font-semibold flex items-center gap-2">
-                            Academic & Technical Summaries
+                            Academic Materials Summary
                         </h2>
-                        <p class="text-xs text-gray-400 font-mono mt-1">High-density knowledge modules & curated executive digests</p>
+                        <p class="text-xs text-gray-400 font-mono mt-1">Reading modules & executive study summaries</p>
                     </div>
 
-                    <!-- Search & Tag Filter -->
+                    <!-- Search & Filter Bar -->
                     <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
                         <div class="relative flex-grow">
                             <input type="text" id="materials-search" oninput="filterMaterials()" placeholder="SEARCH MODULES OR TAGS..." 
@@ -159,52 +158,41 @@
                         </div>
                         <select id="tag-filter" onchange="filterMaterials()" class="bg-obsidian border border-obsidian-border text-xs font-mono text-gray-300 rounded px-3 py-2 focus:outline-none focus:border-gold">
                             <option value="ALL">ALL CATEGORIES</option>
-                            <option value="FINANCE">FINANCIAL SYSTEMS</option>
                             <option value="ARCHITECTURE">SYSTEM ARCHITECTURE</option>
-                            <option value="ENG">ENGINEERING & MECHANICS</option>
-                            <option value="ALGO">ALGORITHMIC DECISION</option>
+                            <option value="FINANCE">FINANCIAL SYSTEMS</option>
                         </select>
                     </div>
                 </div>
 
-                <!-- Live Module Stats Banner -->
-                <div class="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-mono text-gray-400">
+                <!-- Info Indicator Banner -->
+                <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs font-mono text-gray-400">
                     <div class="flex items-center gap-2">
                         <span class="w-2 h-2 rounded-full bg-gold"></span>
-                        <span>ACTIVE ARCHIVE: <strong class="text-gray-200">2026 REVISION</strong></span>
+                        <span>PROGRESS STATUS: <strong class="text-gray-200" id="materials-progress-text">0/2 COMPLETED</strong></span>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-blue-400"></span>
-                        <span>AVG READ TIME: <strong class="text-gray-200">8 MINS</strong></span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                        <span>VERIFICATION: <strong class="text-gray-200">CLASS DESK PASSED</strong></span>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-purple-400"></span>
-                        <span>ACCESS LEVEL: <strong class="text-gray-200">RESTRICTED EXECUTIVE</strong></span>
+                    <div class="text-[11px] text-gray-500">
+                        * All progress is automatically stored locally in your current browser session.
                     </div>
                 </div>
             </div>
 
             <!-- Materials Grid -->
             <div id="materials-container" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <!-- Dynamic cards populated via JavaScript -->
+                <!-- Dynamically populated -->
             </div>
         </section>
 
         <!-- PAGE 2: INTERACTIVE QUIZ ASSESSMENT TERMINAL -->
         <section id="page-2" class="hidden space-y-6">
             
-            <!-- Quiz Dashboard Header -->
+            <!-- Quiz Engine Header -->
             <div class="bg-obsidian-card border border-obsidian-border rounded-lg p-5">
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                         <h2 class="font-serif text-xl text-white font-semibold flex items-center gap-2">
                             Assessment Terminal
                         </h2>
-                        <p class="text-xs text-gray-400 font-mono mt-1">Interactive examination suite & real-time competency evaluations</p>
+                        <p class="text-xs text-gray-400 font-mono mt-1">Interactive examinations & competency evaluation</p>
                     </div>
 
                     <!-- Quiz Selector Buttons -->
@@ -214,46 +202,45 @@
                 </div>
             </div>
 
-            <!-- Main Quiz Area -->
+            <!-- Main Quiz Area Layout -->
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
-                <!-- Left: Quiz Metadata & Active List -->
+                <!-- Left Sidebar: Available Examinations -->
                 <div class="lg:col-span-1 space-y-4">
                     <div class="bg-obsidian-card border border-obsidian-border rounded-lg p-4">
                         <h3 class="text-xs font-mono text-gold uppercase tracking-wider mb-3 flex items-center justify-between">
                             <span>Available Examinations</span>
-                            <span class="text-[10px] text-gray-500" id="quiz-count-badge">8 Modules</span>
+                            <span class="text-[10px] text-gray-500" id="quiz-count-badge">2 Modules</span>
                         </h3>
                         <div class="space-y-2.5" id="quiz-list-sidebar">
                             <!-- Populated by JS -->
                         </div>
                     </div>
 
-                    <!-- Terminal Status Widget -->
+                    <!-- Local Storage Performance Summary -->
                     <div class="bg-obsidian-card border border-obsidian-border rounded-lg p-4 font-mono text-xs text-gray-400 space-y-2">
                         <div class="text-white font-semibold border-b border-obsidian-border pb-2 flex justify-between">
-                            <span>TERMINAL DIAGNOSTICS</span>
-                            <span class="text-emerald-400">ACTIVE</span>
+                            <span>LOCAL PERFORMANCE</span>
+                            <span class="text-gold" id="quiz-overall-avg-badge">AVG: 0.0%</span>
                         </div>
                         <div class="flex justify-between">
-                            <span>MODE:</span>
-                            <span class="text-gray-200">STRICT EVALUATION</span>
+                            <span>QUIZZES TAKEN:</span>
+                            <span class="text-gray-200" id="quizzes-taken-count">0 / 2</span>
                         </div>
                         <div class="flex justify-between">
-                            <span>ATTEMPT LIMIT:</span>
-                            <span class="text-gray-200">UNLIMITED REVISION</span>
+                            <span>PASS TARGET:</span>
+                            <span class="text-emerald-400">80.0%</span>
                         </div>
-                        <div class="flex justify-between">
-                            <span>PASS SCORE:</span>
-                            <span class="text-gold">80.0% MINIMUM</span>
+                        <div class="text-[10px] text-gray-500 border-t border-obsidian-border/60 pt-2 mt-2">
+                            Scores persist locally on this device.
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: Active Question Console -->
+                <!-- Right Column: Active Question Console -->
                 <div class="lg:col-span-2">
-                    <div id="quiz-engine-card" class="bg-obsidian-card border border-obsidian-border rounded-lg p-6 flex flex-col justify-between min-h-[480px]">
-                        <!-- Quiz active state rendered via JS -->
+                    <div id="quiz-engine-card" class="bg-obsidian-card border border-obsidian-border rounded-lg p-5 sm:p-6 flex flex-col justify-between min-h-[440px]">
+                        <!-- Quiz content rendered dynamically -->
                     </div>
                 </div>
             </div>
@@ -261,21 +248,36 @@
 
     </main>
 
-    <!-- DETAIL MODAL FOR MATERIAL READ -->
-    <div id="material-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
-        <div class="bg-obsidian-card border border-gold/40 max-w-2xl w-full rounded-lg shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
-            <div class="p-5 border-b border-obsidian-border flex justify-between items-start bg-obsidian">
-                <div>
-                    <span id="modal-tag" class="text-[10px] font-mono px-2 py-0.5 rounded bg-gold/10 text-gold border border-gold/30">MODULE</span>
-                    <h3 id="modal-title" class="font-serif text-lg font-bold text-white mt-2">Title</h3>
+    <!-- READ MATERIAL OVERLAY (NEARLY COVERING FULL SCREEN: 94vw / 92vh) -->
+    <div id="material-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-2 sm:p-4">
+        <div class="bg-obsidian-card border border-gold/40 w-[96vw] sm:w-[94vw] h-[94vh] sm:h-[92vh] rounded-lg shadow-2xl flex flex-col overflow-hidden">
+            
+            <!-- Modal Header -->
+            <div class="p-4 sm:p-5 border-b border-obsidian-border flex justify-between items-center bg-obsidian shrink-0">
+                <div class="flex items-center space-x-3 truncate">
+                    <span id="modal-tag" class="text-[10px] font-mono px-2 py-0.5 rounded bg-gold/10 text-gold border border-gold/30 shrink-0">MODULE TEMPLATE</span>
+                    <h3 id="modal-title" class="font-serif text-base sm:text-xl font-bold text-white truncate">Material Title Template</h3>
                 </div>
-                <button onclick="closeModal()" class="text-gray-400 hover:text-white font-mono text-lg px-2">✕</button>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white font-mono text-xl px-2 py-1 bg-obsidian-border/50 hover:bg-obsidian-border rounded transition">✕</button>
             </div>
-            <div id="modal-content" class="p-6 overflow-y-auto space-y-4 text-sm text-gray-300 font-sans leading-relaxed">
-                <!-- Populated dynamically -->
+
+            <!-- Modal Content (Scrollable Reader View with Rich Template Hierarchy) -->
+            <div id="modal-content" class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-gray-300 font-sans leading-relaxed flex-grow">
+                <!-- Template content populated dynamically -->
             </div>
-            <div class="p-4 border-t border-obsidian-border bg-obsidian flex justify-end">
-                <button onclick="closeModal()" class="px-4 py-1.5 bg-obsidian-border hover:bg-gray-700 text-white font-mono text-xs rounded transition">CLOSE TERMINAL</button>
+
+            <!-- Modal Footer Controls -->
+            <div class="p-4 border-t border-obsidian-border bg-obsidian flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+                <div class="flex items-center space-x-3">
+                    <button id="modal-mark-read-btn" onclick="toggleReadStatusFromModal()" class="px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 rounded text-xs font-mono transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        <span id="modal-mark-read-text">MARK AS READ</span>
+                    </button>
+                    <span id="modal-read-indicator" class="text-xs font-mono text-gray-400">Status: Unread</span>
+                </div>
+                <button onclick="closeModal()" class="w-full sm:w-auto px-5 py-2 bg-obsidian-border hover:bg-gray-700 text-white font-mono text-xs rounded transition">
+                    CLOSE READER TERMINAL
+                </button>
             </div>
         </div>
     </div>
@@ -284,213 +286,135 @@
     <footer class="bg-obsidian-card border-t border-obsidian-border py-4 px-6 text-xs font-mono text-gray-500 mt-auto">
         <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
             <div>
-                © 2026 <span class="text-gold">MONARCH ACADEMIC TERMINAL</span>. ALL RIGHTS RESERVED.
+                © 2026 <span class="text-gold">MONARCH TERMINAL</span>. ALL RIGHTS RESERVED.
             </div>
             <div class="flex items-center space-x-4 text-[11px]">
-                <span>HOSTED ON GITHUB PAGES</span>
+                <span>LOCAL STORAGE ENGINE ACTIVE</span>
                 <span>•</span>
-                <span>STI-ITB DESK EDITION</span>
+                <span>NO CLOUD SYNC</span>
             </div>
         </div>
     </footer>
 
     <script>
-        // --- DATA ARCHITECTURE ---
+        // --- DATA ARCHITECTURE (2 TEMPLATE MATERIALS & 2 TEMPLATE QUIZZES) ---
         const materialsData = [
             {
                 id: "MAT-01",
-                title: "Financial Systems & Market Architecture",
-                category: "FINANCE",
-                tag: "FINANCE",
-                readTime: "7 min read",
-                date: "Sep 20, 2026",
-                summary: "High-frequency transaction mechanics, clearing house protocols, order book matching algorithms, and modern liquidity management.",
+                title: "Material Template 01: Core Systems Analysis",
+                category: "ARCHITECTURE",
+                tag: "SYSTEM ARCHITECTURE",
+                readTime: "8 min read",
+                date: "Sep 23, 2026",
+                summary: "Template layout structure for technical systems analysis, data flow paradigms, and architecture documentation.",
                 takeaways: [
-                    "Limit Order Books (LOB) process price-time priority matching with O(1) complexity.",
-                    "Settlement delays reduced through distributed ledger atomic swaps.",
-                    "Market impact minimization utilizing volume-weighted average price (VWAP) slicing."
-                ],
-                fullBody: "This module covers modern institutional financial infrastructure. High-frequency trading (HFT) architectures rely on direct market access (DMA) and ultra-low latency FPGA matching engines. Understanding order flow toxicity and market microstructure is vital for risk mitigation in high-volatility environments."
+                    "Template Point 1: Replace this placeholder with your core architectural principles.",
+                    "Template Point 2: Outline key non-functional requirements and target SLAs.",
+                    "Template Point 3: Detail data model constraints and security perimeters."
+                ]
             },
             {
                 id: "MAT-02",
-                title: "Systems Analysis & Information Architecture",
-                category: "ARCHITECTURE",
-                tag: "ARCHITECTURE",
-                readTime: "10 min read",
-                date: "Sep 21, 2026",
-                summary: "Enterprise data modeling, distributed state consistency, event-driven microservices, and high-throughput systems design.",
-                takeaways: [
-                    "CAP Theorem trade-offs: prioritizing availability vs consistency in partitioned networks.",
-                    "Event Sourcing and CQRS patterns for immutable audit trails.",
-                    "Domain-Driven Design (DDD) bounded contexts for modular enterprise scale."
-                ],
-                fullBody: "Detailed breakdown of information architecture in enterprise software. Covers structural analysis, entity-relationship models, and distributed event buses like Kafka. Systems designed under these frameworks maintain high availability and auditability under massive workloads."
-            },
-            {
-                id: "MAT-03",
-                title: "Advanced Luau Engine Mechanics",
-                category: "ENG",
-                tag: "ENG",
-                readTime: "12 min read",
-                date: "Sep 22, 2026",
-                summary: "Memory optimization, vectorization, native code compilation, and garbage collection optimization in high-performance scripts.",
-                takeaways: [
-                    "Luau typing system allows static analysis for compiler optimization passes.",
-                    "Table memory allocation strategies to reduce GC sweep overhead.",
-                    "Parallel Luau execution using Actor model task schedulers."
-                ],
-                fullBody: "In-depth technical breakdown of the Luau runtime environment. Focuses on sandboxing mechanisms, C-API bindings, type checking, and multithreaded actor dispatchers to optimize frametime in complex physics and simulation environments."
-            },
-            {
-                id: "MAT-04",
-                title: "Algorithmic Decision Models & Game Theory",
-                category: "ALGO",
-                tag: "ALGO",
-                readTime: "9 min read",
-                date: "Sep 23, 2026",
-                summary: "Nash Equilibrium, Bayesian inference, linear optimization, and dynamic program execution under stochastic conditions.",
-                takeaways: [
-                    "Minimax optimization with alpha-beta pruning for state-space reduction.",
-                    "Markov Decision Processes (MDP) for sequential decision optimization.",
-                    "Zero-sum game strategy payoff matrix evaluation."
-                ],
-                fullBody: "An executive guide to decision theory and game-theoretic strategy modeling. Analyzes zero-sum and non-zero-sum games, dominant strategies, Mechanism Design, and Monte Carlo Tree Search (MCTS) applications in continuous action spaces."
-            },
-            {
-                id: "MAT-05",
-                title: "Cybernetic Security & Cryptographic Protocols",
-                category: "ENG",
-                tag: "ENG",
-                readTime: "8 min read",
-                date: "Sep 19, 2026",
-                summary: "Zero-Knowledge proofs (ZK-SNARKs), post-quantum cryptography standards, and defensive perimeter isolation.",
-                takeaways: [
-                    "Elliptic Curve Cryptography (ECC) key exchange mechanics.",
-                    "Lattice-based cryptography for post-quantum threat resistance.",
-                    "Zero-trust microsegmentation architecture."
-                ],
-                fullBody: "Comprehensive review of cryptographic primitives and zero-trust framework enforcement. Explores mathematical foundations of public-key infrastructure (PKI) and zero-knowledge verification algorithms."
-            },
-            {
-                id: "MAT-06",
-                title: "Quantitative Risk & Derivatives Analytics",
+                title: "Material Template 02: Advanced Quantitative Methods",
                 category: "FINANCE",
-                tag: "FINANCE",
-                readTime: "11 min read",
-                date: "Sep 18, 2026",
-                summary: "Black-Scholes-Merton option pricing, Monte Carlo risk simulation, Value at Risk (VaR), and stress-testing protocols.",
+                tag: "FINANCIAL SYSTEMS",
+                readTime: "10 min read",
+                date: "Sep 23, 2026",
+                summary: "Template framework for mathematical modeling, statistical evaluation, and algorithmic execution notes.",
                 takeaways: [
-                    "Delta-hedging techniques to maintain portfolio neutrality.",
-                    "Historical vs Parametric Value at Risk (VaR) estimations.",
-                    "Implied volatility surface skew analysis."
-                ],
-                fullBody: "Executive-level overview of derivative pricing and risk measurement. Covers stochastic calculus, Brownian motion, and numerical methods required to construct quantitative risk monitors."
+                    "Template Point 1: Key formula definitions and variable parameters.",
+                    "Template Point 2: Algorithmic time complexity and optimization strategy.",
+                    "Template Point 3: Empirical validation and empirical testing metrics."
+                ]
             }
         ];
 
         const quizzesData = [
             {
                 id: "QZ-01",
-                title: "Financial Infrastructure & Market Mechanics",
-                difficulty: "ADVANCED",
-                attempts: 142,
+                title: "Assessment Quiz 01: Systems & Architecture",
+                difficulty: "INTERMEDIATE",
                 questions: [
                     {
-                        q: "Which matching algorithm prioritizes orders based on the timestamp when price levels are identical?",
+                        q: "[Template Question 1] What is the primary focus when designing decoupled microservice architectures?",
                         options: [
-                            "Pro-Rata Allocation",
-                            "Price-Time Priority (FIFO)",
-                            "Randomized Clearing",
-                            "Volume-Weighted Priority"
+                            "Tight compile-time coupling across services",
+                            "Bounded contexts and independent deployability",
+                            "Storing all global states inside single shared memory",
+                            "Disabling error logging mechanisms"
                         ],
                         answer: 1,
-                        explanation: "Price-Time Priority (First-In, First-Out) ensures that at the same price level, the order placed earliest in time is executed first."
+                        explanation: "Bounded contexts ensure each service manages its own domain model independently without direct DB coupling."
                     },
                     {
-                        q: "What does an atomic swap guarantee in cross-chain or distributed financial settlements?",
+                        q: "[Template Question 2] Which strategy provides immutable event auditing in high-throughput systems?",
                         options: [
-                            "Zero latency execution",
-                            "Execution occurs on both sides or neither, eliminating counterparty risk",
-                            "Guaranteed minimum 10% profit spread",
-                            "Complete anonymity of institutional clearing houses"
+                            "Direct SQL TRUNCATE statements",
+                            "Event Sourcing pattern",
+                            "Manual CSV spreadsheet sync",
+                            "Randomized state overwrites"
                         ],
                         answer: 1,
-                        explanation: "Atomic swaps guarantee atomicity—either both transactions complete successfully or neither does, eliminating settlement risk."
+                        explanation: "Event Sourcing persists state changes as an immutable append-only sequence of events."
                     }
                 ]
             },
             {
                 id: "QZ-02",
-                title: "Information Systems & Enterprise Architecture",
-                difficulty: "INTERMEDIATE",
-                attempts: 98,
-                questions: [
-                    {
-                        q: "According to CAP Theorem, what must a distributed system sacrifice during a Network Partition if it maintains Consistency?",
-                        options: [
-                            "Latency",
-                            "Availability",
-                            "Durability",
-                            "Security"
-                        ],
-                        answer: 1,
-                        explanation: "The CAP theorem states that in the event of a network partition, a system must choose between Consistency (C) and Availability (A)."
-                    },
-                    {
-                        q: "Which pattern separates read operations from write/update operations in microservice data stores?",
-                        options: [
-                            "Event Sourcing",
-                            "CQRS (Command Query Responsibility Segregation)",
-                            "Monolithic Proxying",
-                            "Circuit Breaker"
-                        ],
-                        answer: 1,
-                        explanation: "CQRS explicitly separates read operations (Queries) from write operations (Commands) for performance and scalability."
-                    }
-                ]
-            },
-            {
-                id: "QZ-03",
-                title: "Luau Engine Optimization & Execution Mechanics",
-                difficulty: "EXPERT",
-                attempts: 215,
-                questions: [
-                    {
-                        q: "What key advantage does static type annotation provide in the Luau compilation pipeline?",
-                        options: [
-                            "Eliminates memory consumption entirely",
-                            "Allows the compiler to generate optimized native machine code paths",
-                            "Prevents network latency spikes",
-                            "Automatically converts scripts into C++ source files"
-                        ],
-                        answer: 1,
-                        explanation: "Type annotations allow the Luau compiler to perform ahead-of-time optimizations and native code generation safely."
-                    }
-                ]
-            },
-            {
-                id: "QZ-04",
-                title: "Game Theory & Stochastic Decision Models",
+                title: "Assessment Quiz 02: Quantitative Analytics",
                 difficulty: "ADVANCED",
-                attempts: 84,
                 questions: [
                     {
-                        q: "A Nash Equilibrium occurs when:",
+                        q: "[Template Question 1] In algorithmic matching engines, what does FIFO order prioritization ensure?",
                         options: [
-                            "Both players achieve the absolute maximum possible joint payout",
-                            "No player can improve their payout by unilaterally changing their strategy",
-                            "One player completely bankrupts the opposing entity",
-                            "The sum of all payouts equals zero"
+                            "Random order selection regardless of time",
+                            "Price-time priority execution",
+                            "Highest transaction fee preference only",
+                            "Manual operator approval per trade"
                         ],
                         answer: 1,
-                        explanation: "A Nash Equilibrium is a state where no player has an incentive to unilaterally deviate from their chosen strategy."
+                        explanation: "FIFO matches orders resting at the same price based on the earliest timestamp."
                     }
                 ]
             }
         ];
 
+        // --- LOCAL STORAGE HELPERS ---
+        const STORAGE_KEY_READ = 'monarch_read_materials_v1';
+        const STORAGE_KEY_QUIZ_SCORES = 'monarch_quiz_scores_v1';
+
+        function getReadStatusMap() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY_READ)) || {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveReadStatus(id, isRead) {
+            const map = getReadStatusMap();
+            map[id] = isRead;
+            localStorage.setItem(STORAGE_KEY_READ, JSON.stringify(map));
+            updateDashboardMetrics();
+        }
+
+        function getQuizScoresMap() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY_QUIZ_SCORES)) || {};
+            } catch (e) {
+                return {};
+            }
+        }
+
+        function saveQuizScore(quizId, scorePercent) {
+            const map = getQuizScoresMap();
+            map[quizId] = scorePercent;
+            localStorage.setItem(STORAGE_KEY_QUIZ_SCORES, JSON.stringify(map));
+            updateDashboardMetrics();
+        }
+
         // --- STATE MANAGEMENT ---
+        let activeModalMaterialId = null;
         let currentQuizIndex = 0;
         let currentQuestionIndex = 0;
         let selectedAnswers = {};
@@ -501,7 +425,7 @@
             renderMaterials();
             renderQuizList();
             loadQuiz(0);
-            updateCounters();
+            updateDashboardMetrics();
             startClock();
         };
 
@@ -514,13 +438,33 @@
             }, 1000);
         }
 
-        function updateCounters() {
+        function updateDashboardMetrics() {
+            // Material Counts & Progress
+            const readMap = getReadStatusMap();
+            const readCount = materialsData.filter(m => readMap[m.id]).length;
             document.getElementById('total-materials-count').innerText = `${materialsData.length} Modules`;
+            document.getElementById('materials-progress-text').innerText = `${readCount}/${materialsData.length} COMPLETED`;
+
+            // Quiz Counts & Average Score calculation
+            const quizScoresMap = getQuizScoresMap();
+            const quizScoreValues = Object.values(quizScoresMap);
+            
             document.getElementById('total-quizzes-count').innerText = `${quizzesData.length} Active`;
-            document.getElementById('quiz-count-badge').innerText = `${quizzesData.length} Modules`;
+            
+            if (quizScoreValues.length > 0) {
+                const totalSum = quizScoreValues.reduce((a, b) => a + b, 0);
+                const avg = (totalSum / quizScoreValues.length).toFixed(1);
+                document.getElementById('dash-avg-score').innerText = `${avg}%`;
+                document.getElementById('quiz-overall-avg-badge').innerText = `AVG: ${avg}%`;
+                document.getElementById('quizzes-taken-count').innerText = `${quizScoreValues.length} / ${quizzesData.length}`;
+            } else {
+                document.getElementById('dash-avg-score').innerText = `0.0%`;
+                document.getElementById('quiz-overall-avg-badge').innerText = `AVG: 0.0%`;
+                document.getElementById('quizzes-taken-count').innerText = `0 / ${quizzesData.length}`;
+            }
         }
 
-        // --- PAGE SWITCHING ---
+        // --- NAVIGATION SWITCHING ---
         function switchPage(pageNumber) {
             const page1 = document.getElementById('page-1');
             const page2 = document.getElementById('page-2');
@@ -530,21 +474,22 @@
             if (pageNumber === 1) {
                 page1.classList.remove('hidden');
                 page2.classList.add('hidden');
-                nav1.className = "px-4 py-2 rounded text-xs font-medium font-mono transition-all duration-150 flex items-center gap-2 bg-gold text-black shadow-sm font-bold";
-                nav2.className = "px-4 py-2 rounded text-xs font-medium font-mono text-gray-400 hover:text-white transition-all duration-150 flex items-center gap-2";
+                nav1.className = "flex-1 sm:flex-none px-3.5 py-2 rounded text-xs font-medium font-mono transition-all duration-150 flex items-center justify-center gap-2 bg-gold text-black font-bold";
+                nav2.className = "flex-1 sm:flex-none px-3.5 py-2 rounded text-xs font-medium font-mono text-gray-400 hover:text-white transition-all duration-150 flex items-center justify-center gap-2";
             } else {
                 page1.classList.add('hidden');
                 page2.classList.remove('hidden');
-                nav2.className = "px-4 py-2 rounded text-xs font-medium font-mono transition-all duration-150 flex items-center gap-2 bg-gold text-black shadow-sm font-bold";
-                nav1.className = "px-4 py-2 rounded text-xs font-medium font-mono text-gray-400 hover:text-white transition-all duration-150 flex items-center gap-2";
+                nav2.className = "flex-1 sm:flex-none px-3.5 py-2 rounded text-xs font-medium font-mono transition-all duration-150 flex items-center justify-center gap-2 bg-gold text-black font-bold";
+                nav1.className = "flex-1 sm:flex-none px-3.5 py-2 rounded text-xs font-medium font-mono text-gray-400 hover:text-white transition-all duration-150 flex items-center justify-center gap-2";
             }
         }
 
-        // --- PAGE 1: MATERIALS RENDER & FILTER ---
+        // --- PAGE 1: MATERIALS RENDER & MARK AS READ ---
         function renderMaterials() {
             const container = document.getElementById('materials-container');
             const searchValue = document.getElementById('materials-search').value.toLowerCase();
             const tagValue = document.getElementById('tag-filter').value;
+            const readMap = getReadStatusMap();
 
             const filtered = materialsData.filter(item => {
                 const matchesSearch = item.title.toLowerCase().includes(searchValue) || 
@@ -557,111 +502,203 @@
             if (filtered.length === 0) {
                 container.innerHTML = `
                     <div class="col-span-full bg-obsidian-card border border-obsidian-border rounded-lg p-8 text-center text-gray-500 font-mono text-xs">
-                        NO RECORD MATCHING SPECIFIED CRITERIA LOCATED IN TERMINAL ARCHIVE.
+                        NO RECORD MATCHING SPECIFIED CRITERIA LOCATED.
                     </div>
                 `;
                 return;
             }
 
-            container.innerHTML = filtered.map(item => `
-                <div class="bg-obsidian-card border border-obsidian-border hover:border-gold/50 transition-all duration-200 rounded-lg p-5 flex flex-col justify-between group">
-                    <div>
-                        <!-- Card Top Info Bar -->
-                        <div class="flex items-center justify-between text-[11px] font-mono text-gray-400 mb-3">
-                            <span class="px-2 py-0.5 rounded bg-obsidian border border-obsidian-border text-gold font-semibold">${item.id}</span>
-                            <div class="flex items-center gap-3">
-                                <span>${item.date}</span>
-                                <span>•</span>
-                                <span class="text-gray-300">${item.readTime}</span>
+            container.innerHTML = filtered.map(item => {
+                const isRead = !!readMap[item.id];
+                return `
+                    <div class="bg-obsidian-card border ${isRead ? 'border-emerald-500/40' : 'border-obsidian-border'} hover:border-gold/50 transition-all duration-200 rounded-lg p-5 flex flex-col justify-between group">
+                        <div>
+                            <!-- Header Info Bar -->
+                            <div class="flex items-center justify-between text-[11px] font-mono text-gray-400 mb-3">
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-2 py-0.5 rounded bg-obsidian border border-obsidian-border text-gold font-semibold">${item.id}</span>
+                                    ${isRead ? `<span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-bold">COMPLETED</span>` : `<span class="px-2 py-0.5 rounded bg-gray-800 text-gray-400 border border-gray-700">UNREAD</span>`}
+                                </div>
+                                <span class="text-gray-400">${item.readTime}</span>
+                            </div>
+
+                            <!-- Title -->
+                            <h3 class="font-serif text-base font-bold text-white group-hover:text-gold transition-colors mb-2">
+                                ${item.title}
+                            </h3>
+
+                            <!-- Summary -->
+                            <p class="text-xs text-gray-400 leading-relaxed font-sans mb-4">
+                                ${item.summary}
+                            </p>
+
+                            <!-- Takeaways -->
+                            <div class="bg-obsidian border border-obsidian-border/70 rounded p-3 mb-4 space-y-2">
+                                <div class="text-[10px] font-mono text-gold font-bold tracking-wider uppercase">Key Module Takeaways:</div>
+                                <ul class="space-y-1 text-xs text-gray-300 list-disc list-inside">
+                                    ${item.takeaways.map(pt => `<li class="truncate">${pt}</li>`).join('')}
+                                </ul>
                             </div>
                         </div>
 
-                        <!-- Card Header -->
-                        <h3 class="font-serif text-base font-bold text-white group-hover:text-gold transition-colors mb-2">
-                            ${item.title}
-                        </h3>
+                        <!-- Card Action Bar -->
+                        <div class="flex items-center justify-between pt-3 border-t border-obsidian-border/50 gap-2">
+                            <button onclick="toggleReadStatusCard('${item.id}', event)" class="px-2.5 py-1.5 text-xs font-mono rounded border transition flex items-center gap-1.5 ${isRead ? 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30 hover:bg-emerald-500/20' : 'bg-obsidian text-gray-400 border-obsidian-border hover:text-white'}">
+                                ${isRead ? '✓ MARKED DONE' : '+ MARK AS DONE'}
+                            </button>
 
-                        <!-- Card Executive Summary -->
-                        <p class="text-xs text-gray-400 leading-relaxed font-sans mb-4">
-                            ${item.summary}
-                        </p>
-
-                        <!-- Key Takeaways Accordion Container -->
-                        <div class="bg-obsidian border border-obsidian-border/70 rounded p-3 mb-4 space-y-2">
-                            <div class="text-[10px] font-mono text-gold font-bold tracking-wider uppercase">Key Takeaways:</div>
-                            <ul class="space-y-1 text-xs text-gray-300 list-disc list-inside">
-                                ${item.takeaways.map(pt => `<li class="truncate">${pt}</li>`).join('')}
-                            </ul>
+                            <button onclick="openModal('${item.id}')" class="px-3.5 py-1.5 bg-obsidian border border-gold/40 hover:border-gold hover:text-gold text-xs font-mono text-gold rounded transition flex items-center gap-1.5">
+                                <span>OPEN READER</span>
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                            </button>
                         </div>
                     </div>
-
-                    <!-- Footer Action -->
-                    <div class="flex items-center justify-between pt-3 border-t border-obsidian-border/50">
-                        <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-gold/10 text-gold border border-gold/20">
-                            ${item.tag}
-                        </span>
-                        <button onclick="openModal('${item.id}')" class="px-3 py-1.5 bg-obsidian border border-obsidian-border hover:border-gold hover:text-gold text-xs font-mono text-gray-300 rounded transition flex items-center gap-1.5">
-                            <span>READ DOSSIER</span>
-                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function filterMaterials() {
             renderMaterials();
         }
 
+        function toggleReadStatusCard(id, event) {
+            if(event) event.stopPropagation();
+            const map = getReadStatusMap();
+            const nextState = !map[id];
+            saveReadStatus(id, nextState);
+            renderMaterials();
+        }
+
+        // --- FULLSCREEN READER MODAL WITH TYPOGRAPHY TEMPLATES ---
         function openModal(id) {
+            activeModalMaterialId = id;
             const item = materialsData.find(m => m.id === id);
             if (!item) return;
 
+            const readMap = getReadStatusMap();
+            const isRead = !!readMap[id];
+
             document.getElementById('modal-tag').innerText = `${item.id} // ${item.tag}`;
             document.getElementById('modal-title').innerText = item.title;
+
+            // Render Full Editable Typography Template layout
             document.getElementById('modal-content').innerHTML = `
-                <div class="p-3 bg-obsidian border border-obsidian-border rounded font-mono text-xs text-gold">
-                    EXECUTIVE SUMMARY: ${item.summary}
+                <!-- EXECUTIVE SUMMARY CALLOUT -->
+                <div class="p-4 bg-obsidian border border-gold/30 rounded-lg space-y-1">
+                    <div class="text-[10px] font-mono text-gold font-bold uppercase tracking-widest">EXECUTIVE SUMMARY</div>
+                    <p class="text-xs text-gray-200 font-mono">${item.summary}</p>
                 </div>
-                <div class="space-y-2">
-                    <h4 class="font-mono text-xs text-white font-bold uppercase">Core Findings & Takeaways:</h4>
-                    <ul class="list-disc list-inside space-y-1 text-xs text-gray-300">
-                        ${item.takeaways.map(t => `<li>${t}</li>`).join('')}
+
+                <!-- SECTION 1: MAIN HEADING TEMPLATE -->
+                <div class="space-y-3">
+                    <h1 class="font-serif text-2xl font-bold text-white tracking-tight border-b border-obsidian-border pb-2">
+                        1. Primary Section Heading (H1 Template)
+                    </h1>
+                    <p class="text-sm leading-relaxed text-gray-300">
+                        This is standard body paragraph text template. You can easily edit or replace this text with your detailed course notes, study materials, or research documentation. Modern Old Money typography utilizes balanced line-heights and high contrast against dark obsidian backdrops for maximum readability.
+                    </p>
+                    <p class="text-sm leading-relaxed text-gray-300">
+                        Second paragraph placeholder. Continuous reading modules can be structured here with clear conceptual transitions and structured technical explanations.
+                    </p>
+                </div>
+
+                <!-- SECTION 2: SUBTITLE & LIST TEMPLATE -->
+                <div class="space-y-3">
+                    <h2 class="font-serif text-lg font-semibold text-gold tracking-wide">
+                        1.1 Subsection Title (H2 Template)
+                    </h2>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Below is a clean bullet list template for highlighting key concepts, methodologies, or core takeaways:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-300 bg-obsidian/60 p-4 rounded-lg border border-obsidian-border">
+                        <li><strong class="text-white">Core Point Alpha:</strong> Replace with your primary key insight or system rule.</li>
+                        <li><strong class="text-white">Core Point Beta:</strong> Replace with secondary analytical supporting data.</li>
+                        <li><strong class="text-white">Core Point Gamma:</strong> Replace with practical execution steps or conclusions.</li>
                     </ul>
                 </div>
-                <hr class="border-obsidian-border">
-                <div class="space-y-2">
-                    <h4 class="font-mono text-xs text-white font-bold uppercase">Full Academic Dossier:</h4>
-                    <p class="text-sm leading-relaxed">${item.fullBody}</p>
+
+                <!-- SECTION 3: CODE / FORMULA / TECHNICAL BLOCK TEMPLATE -->
+                <div class="space-y-3">
+                    <h3 class="font-mono text-xs text-gold uppercase tracking-widest font-bold">
+                        1.2 Technical Reference / Formula Block (H3 Template)
+                    </h3>
+                    <div class="bg-obsidian border border-obsidian-border rounded-lg p-4 font-mono text-xs text-emerald-400 space-y-1 overflow-x-auto">
+                        <div>// Sample Formula or Script Template</div>
+                        <div class="text-gray-200">System.Performance = (Efficiency * Accuracy) / Latency;</div>
+                        <div class="text-gray-500">// Note: Replace this container with mathematical formulas or code snippets.</div>
+                    </div>
+                </div>
+
+                <!-- SECTION 4: CALLOUT BOX TEMPLATE -->
+                <div class="p-4 bg-amber-glow border-l-4 border-gold rounded-r-lg space-y-1">
+                    <h4 class="font-serif text-sm font-bold text-gold">Important Note Callout Box (H4 Template)</h4>
+                    <p class="text-xs text-gray-300">
+                        Use this styled container template to highlight critical warnings, exam focal points, or essential formulas that require special attention during study sessions.
+                    </p>
                 </div>
             `;
+
+            updateModalReadButtonState(isRead);
             document.getElementById('material-modal').classList.remove('hidden');
+        }
+
+        function updateModalReadButtonState(isRead) {
+            const btn = document.getElementById('modal-mark-read-btn');
+            const btnText = document.getElementById('modal-mark-read-text');
+            const indicator = document.getElementById('modal-read-indicator');
+
+            if (isRead) {
+                btn.className = "px-4 py-2 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 rounded text-xs font-mono transition flex items-center gap-2";
+                btnText.innerText = "MARKED AS READ ✓";
+                indicator.innerText = "Status: Completed";
+                indicator.className = "text-xs font-mono text-emerald-400";
+            } else {
+                btn.className = "px-4 py-2 bg-obsidian hover:bg-obsidian-border text-gray-300 border border-obsidian-border rounded text-xs font-mono transition flex items-center gap-2";
+                btnText.innerText = "MARK AS READ";
+                indicator.innerText = "Status: Unread";
+                indicator.className = "text-xs font-mono text-gray-400";
+            }
+        }
+
+        function toggleReadStatusFromModal() {
+            if (!activeModalMaterialId) return;
+            const map = getReadStatusMap();
+            const nextState = !map[activeModalMaterialId];
+            saveReadStatus(activeModalMaterialId, nextState);
+            updateModalReadButtonState(nextState);
+            renderMaterials();
         }
 
         function closeModal() {
             document.getElementById('material-modal').classList.add('hidden');
+            activeModalMaterialId = null;
         }
 
-        // --- PAGE 2: INTERACTIVE QUIZ ENGINE ---
+        // --- PAGE 2: INTERACTIVE QUIZ ENGINE WITH LOCAL STORAGE SCORE PERSISTENCE ---
         function renderQuizList() {
             const sidebar = document.getElementById('quiz-list-sidebar');
             const topSelector = document.getElementById('quiz-selector-list');
+            const quizScoresMap = getQuizScoresMap();
 
-            sidebar.innerHTML = quizzesData.map((q, idx) => `
-                <div onclick="loadQuiz(${idx})" class="p-3 rounded border cursor-pointer transition flex items-center justify-between ${idx === currentQuizIndex ? 'bg-gold/10 border-gold text-white' : 'bg-obsidian border-obsidian-border text-gray-400 hover:border-gray-600'}">
-                    <div>
-                        <div class="text-xs font-bold font-mono ${idx === currentQuizIndex ? 'text-gold' : 'text-gray-200'}">${q.title}</div>
-                        <div class="text-[10px] font-mono text-gray-500 mt-1 flex gap-2">
-                            <span>${q.questions.length} QUESTIONS</span>
-                            <span>•</span>
-                            <span>${q.attempts} ATTEMPTS</span>
+            sidebar.innerHTML = quizzesData.map((q, idx) => {
+                const savedScore = quizScoresMap[q.id];
+                const hasTaken = savedScore !== undefined;
+
+                return `
+                    <div onclick="loadQuiz(${idx})" class="p-3 rounded border cursor-pointer transition flex items-center justify-between ${idx === currentQuizIndex ? 'bg-gold/10 border-gold text-white' : 'bg-obsidian border-obsidian-border text-gray-400 hover:border-gray-600'}">
+                        <div>
+                            <div class="text-xs font-bold font-mono ${idx === currentQuizIndex ? 'text-gold' : 'text-gray-200'}">${q.title}</div>
+                            <div class="text-[10px] font-mono text-gray-500 mt-1 flex gap-2">
+                                <span>${q.questions.length} QUESTIONS</span>
+                                ${hasTaken ? `<span>•</span><span class="text-emerald-400">LAST SCORE: ${savedScore}%</span>` : ''}
+                            </div>
                         </div>
+                        <span class="text-[9px] font-mono px-1.5 py-0.5 rounded border border-gold/40 text-gold bg-gold/10">
+                            ${q.difficulty}
+                        </span>
                     </div>
-                    <span class="text-[9px] font-mono px-1.5 py-0.5 rounded border ${q.difficulty === 'EXPERT' ? 'border-red-500/50 text-red-400 bg-red-500/10' : 'border-gold/40 text-gold bg-gold/10'}">
-                        ${q.difficulty}
-                    </span>
-                </div>
-            `).join('');
+                `;
+            }).join('');
 
             topSelector.innerHTML = quizzesData.map((q, idx) => `
                 <button onclick="loadQuiz(${idx})" class="px-2.5 py-1 rounded text-xs font-mono border transition ${idx === currentQuizIndex ? 'bg-gold text-black font-bold border-gold' : 'bg-obsidian border-obsidian-border text-gray-400 hover:text-white'}">
@@ -694,15 +731,15 @@
 
             card.innerHTML = `
                 <div>
-                    <!-- Header Step Indicator -->
-                    <div class="flex items-center justify-between border-b border-obsidian-border pb-3 mb-5 font-mono text-xs">
+                    <!-- Question Header Bar -->
+                    <div class="flex items-center justify-between border-b border-obsidian-border pb-3 mb-4 font-mono text-xs">
                         <div class="flex items-center space-x-2">
                             <span class="text-gold font-bold">${quiz.id}</span>
-                            <span class="text-gray-500">//</span>
-                            <span class="text-gray-300">${quiz.title}</span>
+                            <span class="text-gray-600">//</span>
+                            <span class="text-gray-300 truncate max-w-[200px] sm:max-w-none">${quiz.title}</span>
                         </div>
-                        <span class="px-2 py-0.5 rounded bg-obsidian border border-obsidian-border text-gray-400">
-                            QUESTION ${currentQuestionIndex + 1} OF ${totalQ}
+                        <span class="px-2 py-0.5 rounded bg-obsidian border border-obsidian-border text-gray-400 shrink-0">
+                            ${currentQuestionIndex + 1} / ${totalQ}
                         </span>
                     </div>
 
@@ -716,12 +753,12 @@
                         ${q.q}
                     </h3>
 
-                    <!-- Option Radio Buttons -->
+                    <!-- Choice Options -->
                     <div class="space-y-3 font-sans">
                         ${q.options.map((opt, oIdx) => `
                             <label onclick="selectOption(${oIdx})" class="flex items-center p-3.5 rounded-lg border cursor-pointer transition duration-150 ${currentSelected === oIdx ? 'bg-gold/15 border-gold text-white shadow-sm' : 'bg-obsidian border-obsidian-border text-gray-300 hover:border-gray-600'}">
                                 <input type="radio" name="option" class="hidden" ${currentSelected === oIdx ? 'checked' : ''}>
-                                <div class="w-4 h-4 rounded-full border border-gray-500 flex items-center justify-center mr-3 font-mono text-[10px] ${currentSelected === oIdx ? 'border-gold bg-gold text-black font-bold' : ''}">
+                                <div class="w-4 h-4 rounded-full border border-gray-500 flex items-center justify-center mr-3 font-mono text-[10px] shrink-0 ${currentSelected === oIdx ? 'border-gold bg-gold text-black font-bold' : ''}">
                                     ${String.fromCharCode(65 + oIdx)}
                                 </div>
                                 <span class="text-xs sm:text-sm font-medium">${opt}</span>
@@ -730,10 +767,10 @@
                     </div>
                 </div>
 
-                <!-- Bottom Navigation Buttons -->
+                <!-- Footer Nav Controls -->
                 <div class="flex items-center justify-between border-t border-obsidian-border pt-4 mt-6 font-mono text-xs">
                     <button onclick="prevQuestion()" ${currentQuestionIndex === 0 ? 'disabled class="opacity-30 cursor-not-allowed text-gray-500"' : 'class="px-4 py-2 bg-obsidian border border-obsidian-border hover:border-gold text-gray-300 rounded transition"'}>
-                        ← PREVIOUS
+                        ← PREV
                     </button>
 
                     ${currentQuestionIndex === totalQ - 1 ? `
@@ -742,7 +779,7 @@
                         </button>
                     ` : `
                         <button onclick="nextQuestion()" class="px-5 py-2 bg-obsidian border border-gold/40 hover:border-gold text-gold rounded transition">
-                            NEXT QUESTION →
+                            NEXT →
                         </button>
                     `}
                 </div>
@@ -785,11 +822,15 @@
             const scorePercent = Math.round((correctCount / quiz.questions.length) * 100);
             const passed = scorePercent >= 80;
 
+            // Persist Score to Local Storage
+            saveQuizScore(quiz.id, scorePercent);
+            renderQuizList();
+
             card.innerHTML = `
                 <div>
-                    <!-- Header -->
+                    <!-- Assessment Header -->
                     <div class="border-b border-obsidian-border pb-3 mb-6 font-mono text-xs flex justify-between items-center">
-                        <span class="text-gold font-bold">ASSESSMENT PERFORMANCE REPORT</span>
+                        <span class="text-gold font-bold">PERFORMANCE REPORT PERSISTED</span>
                         <span class="px-2 py-0.5 rounded ${passed ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30' : 'bg-red-500/10 text-red-400 border border-red-500/30'}">
                             ${passed ? 'PASSED / EXCEEDED' : 'REVISION REQUIRED'}
                         </span>
@@ -806,9 +847,9 @@
                         </div>
                     </div>
 
-                    <!-- Breakdown per question -->
+                    <!-- Question Review Breakdown -->
                     <div class="space-y-4 font-mono text-xs">
-                        <div class="text-gray-400 uppercase tracking-wider font-bold">Detailed Review:</div>
+                        <div class="text-gray-400 uppercase tracking-wider font-bold">Question Review:</div>
                         ${quiz.questions.map((q, idx) => {
                             const userAns = selectedAnswers[idx];
                             const isCorrect = userAns === q.answer;
@@ -816,16 +857,16 @@
                                 <div class="p-3.5 bg-obsidian border ${isCorrect ? 'border-emerald-500/30' : 'border-red-500/30'} rounded-lg space-y-2">
                                     <div class="flex items-start justify-between">
                                         <span class="text-white font-sans font-semibold">Q${idx+1}: ${q.q}</span>
-                                        <span class="${isCorrect ? 'text-emerald-400' : 'text-red-400'} font-bold ml-2">
+                                        <span class="${isCorrect ? 'text-emerald-400' : 'text-red-400'} font-bold ml-2 shrink-0">
                                             ${isCorrect ? '✓ CORRECT' : '✕ INCORRECT'}
                                         </span>
                                     </div>
                                     <div class="text-gray-400 font-sans text-xs">
-                                        <strong>Your Answer:</strong> ${userAns !== undefined ? q.options[userAns] : 'None Selected'}
+                                        <strong>Your Choice:</strong> ${userAns !== undefined ? q.options[userAns] : 'None Selected'}
                                     </div>
                                     ${!isCorrect ? `
                                         <div class="text-gold font-sans text-xs">
-                                            <strong>Correct Answer:</strong> ${q.options[q.answer]}
+                                            <strong>Correct Solution:</strong> ${q.options[q.answer]}
                                         </div>
                                     ` : ''}
                                     <div class="text-[11px] text-gray-400 bg-obsidian-card p-2 rounded border border-obsidian-border mt-1">
@@ -837,10 +878,10 @@
                     </div>
                 </div>
 
-                <!-- Footer Restart -->
+                <!-- Footer Action -->
                 <div class="border-t border-obsidian-border pt-4 mt-6 flex justify-end">
                     <button onclick="loadQuiz(${currentQuizIndex})" class="px-5 py-2 bg-gold hover:bg-gold-light text-black font-bold font-mono text-xs rounded transition shadow-md">
-                        RESTART EXAMINATION
+                        REATTEMPT ASSESSMENT
                     </button>
                 </div>
             `;
