@@ -145,7 +145,7 @@
                         </h2>
                     </div>
 
-                    <!-- Search Bar (Category Filter Removed) -->
+                    <!-- Search Bar -->
                     <div class="w-full md:w-80">
                         <div class="relative">
                             <input type="text" id="materials-search" oninput="filterMaterials()" placeholder="SEARCH MODULES..." 
@@ -239,11 +239,11 @@
 
     </main>
 
-    <!-- READ MATERIAL OVERLAY (NEARLY COVERING FULL SCREEN) -->
+    <!-- READ MATERIAL OVERLAY -->
     <div id="material-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-2 sm:p-4">
         <div class="bg-obsidian-card border border-gold/40 w-[96vw] sm:w-[94vw] h-[94vh] sm:h-[92vh] rounded-lg shadow-2xl flex flex-col overflow-hidden">
             
-            <!-- Modal Header (Category Tags Removed) -->
+            <!-- Modal Header -->
             <div class="p-4 sm:p-5 border-b border-obsidian-border flex justify-between items-center bg-obsidian shrink-0">
                 <div class="flex items-center space-x-3 truncate">
                     <span id="modal-tag" class="text-[10px] font-mono px-2 py-0.5 rounded bg-gold/10 text-gold border border-gold/30 shrink-0">MODULE TEMPLATE</span>
@@ -252,9 +252,9 @@
                 <button onclick="closeModal()" class="text-gray-400 hover:text-white font-mono text-xl px-2 py-1 bg-obsidian-border/50 hover:bg-obsidian-border rounded transition">✕</button>
             </div>
 
-            <!-- Modal Content (Scrollable Reader View with Rich Template Hierarchy) -->
+            <!-- Modal Content (Scrollable Reader View with Unique Dynamic Body per Material) -->
             <div id="modal-content" class="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm text-gray-300 font-sans leading-relaxed flex-grow">
-                <!-- Template content populated dynamically -->
+                <!-- Dynamic Content Populated Per Material -->
             </div>
 
             <!-- Modal Footer Controls -->
@@ -285,7 +285,7 @@
     </footer>
 
     <script>
-        // --- DATA ARCHITECTURE (CATEGORY FIELD REMOVED) ---
+        // --- DATA ARCHITECTURE ---
         const materialsData = [
             {
                 id: "HB 1",
@@ -297,7 +297,60 @@
                     "Investasi itu asik",
                     "test2",
                     "Gajah itb mengerikan"
-                ]
+                ],
+                // Custom reader content specifically for HB 1
+                modalBodyHTML: `
+                    <!-- EXECUTIVE SUMMARY CALLOUT -->
+                    <div class="p-4 bg-obsidian border border-gold/30 rounded-lg space-y-1">
+                        <div class="text-[10px] font-mono text-gold font-bold uppercase tracking-widest">EXECUTIVE SUMMARY</div>
+                        <p class="text-xs text-gray-200 font-mono">Kakak mentor baik baik</p>
+                    </div>
+
+                    <!-- SECTION 1 -->
+                    <div class="space-y-3">
+                        <h1 class="font-serif text-2xl font-bold text-white tracking-tight border-b border-obsidian-border pb-2">
+                            1. Overview & Orientation Notes
+                        </h1>
+                        <p class="text-sm leading-relaxed text-gray-300">
+                            Rangkuman mengenai pengalaman awal dan materi handbook 1. Kakak mentor memberikan bimbingan secara mendalam dan terstruktur.
+                        </p>
+                        <p class="text-sm leading-relaxed text-gray-300">
+                            Fokus utama mencakup pengenalan budaya perkuliahan, prinsip dasar investasi, serta dinamika lingkungan ITB.
+                        </p>
+                    </div>
+
+                    <!-- SECTION 2 -->
+                    <div class="space-y-3">
+                        <h2 class="font-serif text-lg font-semibold text-gold tracking-wide">
+                            1.1 Poin Penting & Pembelajaran Utama
+                        </h2>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-300 bg-obsidian/60 p-4 rounded-lg border border-obsidian-border">
+                            <li><strong class="text-white">Poin 1:</strong> Investasi itu asik jika dipahami dengan analisis yang tepat.</li>
+                            <li><strong class="text-white">Poin 2:</strong> Pengujian dan penyesuaian materi secara berkala (test2).</li>
+                            <li><strong class="text-white">Poin 3:</strong> Mengapa gajah ITB begitu ikonik dan mengerikan dalam tradisi kampus.</li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 3 -->
+                    <div class="space-y-3">
+                        <h3 class="font-mono text-xs text-gold uppercase tracking-widest font-bold">
+                            1.2 Rincian Tambahan (HB 1)
+                        </h3>
+                        <div class="bg-obsidian border border-obsidian-border rounded-lg p-4 font-mono text-xs text-emerald-400 space-y-1 overflow-x-auto">
+                            <div>// HB 1 Module Reference</div>
+                            <div class="text-gray-200">Status: Read & Verified</div>
+                            <div class="text-gray-500">// Catatan khusus untuk persiapan ujian/kuiz.</div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 4 -->
+                    <div class="p-4 bg-amber-glow border-l-4 border-gold rounded-r-lg space-y-1">
+                        <h4 class="font-serif text-sm font-bold text-gold">Catatan Mentor (HB 1)</h4>
+                        <p class="text-xs text-gray-300">
+                            Pastikan membaca ulang bagian dasar sebelum melanjutkan ke quiz 1.
+                        </p>
+                    </div>
+                `
             },
             {
                 id: "HB 2",
@@ -309,7 +362,57 @@
                     "tk1",
                     "tk2",
                     "tk3"
-                ]
+                ],
+                // Custom reader content specifically for HB 2
+                modalBodyHTML: `
+                    <!-- EXECUTIVE SUMMARY CALLOUT -->
+                    <div class="p-4 bg-obsidian border border-gold/30 rounded-lg space-y-1">
+                        <div class="text-[10px] font-mono text-gold font-bold uppercase tracking-widest">EXECUTIVE SUMMARY</div>
+                        <p class="text-xs text-gray-200 font-mono">sm2</p>
+                    </div>
+
+                    <!-- SECTION 1 -->
+                    <div class="space-y-3">
+                        <h1 class="font-serif text-2xl font-bold text-white tracking-tight border-b border-obsidian-border pb-2">
+                            1. Module HB 2 Overview
+                        </h1>
+                        <p class="text-sm leading-relaxed text-gray-300">
+                            Rangkuman materi untuk Handbook 2 (title2). Modul ini berfokus pada kelanjutan teori dan analisis teknis.
+                        </p>
+                    </div>
+
+                    <!-- SECTION 2 -->
+                    <div class="space-y-3">
+                        <h2 class="font-serif text-lg font-semibold text-gold tracking-wide">
+                            1.1 Takeaways Modul HB 2
+                        </h2>
+                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-300 bg-obsidian/60 p-4 rounded-lg border border-obsidian-border">
+                            <li><strong class="text-white">Takeaway 1:</strong> tk1</li>
+                            <li><strong class="text-white">Takeaway 2:</strong> tk2</li>
+                            <li><strong class="text-white">Takeaway 3:</strong> tk3</li>
+                        </ul>
+                    </div>
+
+                    <!-- SECTION 3 -->
+                    <div class="space-y-3">
+                        <h3 class="font-mono text-xs text-gold uppercase tracking-widest font-bold">
+                            1.2 Rincian Spesifik Module 2
+                        </h3>
+                        <div class="bg-obsidian border border-obsidian-border rounded-lg p-4 font-mono text-xs text-emerald-400 space-y-1 overflow-x-auto">
+                            <div>// HB 2 Execution Log</div>
+                            <div class="text-gray-200">Read Time: rt2 | Date: dt2</div>
+                            <div class="text-gray-500">// Module HB 2 unique content loaded.</div>
+                        </div>
+                    </div>
+
+                    <!-- SECTION 4 -->
+                    <div class="p-4 bg-amber-glow border-l-4 border-gold rounded-r-lg space-y-1">
+                        <h4 class="font-serif text-sm font-bold text-gold">Highlight HB 2</h4>
+                        <p class="text-xs text-gray-300">
+                            Catatan khusus dan persiapan lanjutan untuk quiz 2.
+                        </p>
+                    </div>
+                `
             }
         ];
 
@@ -538,7 +641,7 @@
             renderMaterials();
         }
 
-        // --- FULLSCREEN READER MODAL WITH TYPOGRAPHY TEMPLATES ---
+        // --- FULLSCREEN READER MODAL WITH DYNAMIC CONTENT PER MATERIAL ---
         function openModal(id) {
             activeModalMaterialId = id;
             const item = materialsData.find(m => m.id === id);
@@ -550,62 +653,8 @@
             document.getElementById('modal-tag').innerText = `${item.id} // ACADEMIC MODULE`;
             document.getElementById('modal-title').innerText = item.title;
 
-            // Render Full Editable Typography Template layout
-            document.getElementById('modal-content').innerHTML = `
-                <!-- EXECUTIVE SUMMARY CALLOUT -->
-                <div class="p-4 bg-obsidian border border-gold/30 rounded-lg space-y-1">
-                    <div class="text-[10px] font-mono text-gold font-bold uppercase tracking-widest">EXECUTIVE SUMMARY</div>
-                    <p class="text-xs text-gray-200 font-mono">${item.summary}</p>
-                </div>
-
-                <!-- SECTION 1: MAIN HEADING TEMPLATE -->
-                <div class="space-y-3">
-                    <h1 class="font-serif text-2xl font-bold text-white tracking-tight border-b border-obsidian-border pb-2">
-                        1. Handbook 1 Summary
-                    </h1>
-                    <p class="text-sm leading-relaxed text-gray-300">
-                        Subtext
-                    </p>
-                    <p class="text-sm leading-relaxed text-gray-300">
-                        Subtext test
-                    </p>
-                </div>
-
-                <!-- SECTION 2: SUBTITLE & LIST TEMPLATE -->
-                <div class="space-y-3">
-                    <h2 class="font-serif text-lg font-semibold text-gold tracking-wide">
-                        1.1 Sub-Title 1 (H2 size)
-                    </h2>
-                    <p class="text-sm text-gray-300 leading-relaxed">
-                        Subtext
-                    </p>
-                    <ul class="list-disc list-inside space-y-2 text-sm text-gray-300 bg-obsidian/60 p-4 rounded-lg border border-obsidian-border">
-                        <li><strong class="text-white">Core Point Alpha:</strong> Bullet list 1 Template.</li>
-                        <li><strong class="text-white">Core Point Beta:</strong> Bullet list 2 Template.</li>
-                        <li><strong class="text-white">Core Point Gamma:</strong> Bullet list 3 Template.</li>
-                    </ul>
-                </div>
-
-                <!-- SECTION 3: CODE / FORMULA / TECHNICAL BLOCK TEMPLATE -->
-                <div class="space-y-3">
-                    <h3 class="font-mono text-xs text-gold uppercase tracking-widest font-bold">
-                        1.2 Sub-Title 2 (H3, smaller than H2)
-                    </h3>
-                    <div class="bg-obsidian border border-obsidian-border rounded-lg p-4 font-mono text-xs text-emerald-400 space-y-1 overflow-x-auto">
-                        <div>//Template</div>
-                        <div class="text-gray-200">Test 1</div>
-                        <div class="text-gray-500">// Note: Script Note/Test.</div>
-                    </div>
-                </div>
-
-                <!-- SECTION 4: CALLOUT BOX TEMPLATE -->
-                <div class="p-4 bg-amber-glow border-l-4 border-gold rounded-r-lg space-y-1">
-                    <h4 class="font-serif text-sm font-bold text-gold">(H4 Note Template)</h4>
-                    <p class="text-xs text-gray-300">
-                        Highlight/future notes template
-                    </p>
-                </div>
-            `;
+            // Render unique HTML modal body defined in materialsData for each material
+            document.getElementById('modal-content').innerHTML = item.modalBodyHTML;
 
             updateModalReadButtonState(isRead);
             document.getElementById('material-modal').classList.remove('hidden');
@@ -822,7 +871,7 @@
                             return `
                                 <div class="p-3.5 bg-obsidian border ${isCorrect ? 'border-emerald-500/30' : 'border-red-500/30'} rounded-lg space-y-2">
                                     <div class="flex items-start justify-between">
-                                        <span class="text-white font-sans font-semibold">Q${idx+1}: ${q.q}</span>
+                                        <span class="text-white font-sans font-semibold">Q${idx+1}:${q.q}</span>
                                         <span class="${isCorrect ? 'text-emerald-400' : 'text-red-400'} font-bold ml-2 shrink-0">
                                             ${isCorrect ? '✓ CORRECT' : '✕ INCORRECT'}
                                         </span>
