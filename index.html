@@ -73,13 +73,13 @@
                     LOCAL INSTANCE ONLINE
                 </span>
                 <span class="text-gray-600">|</span>
-                <span><span class="text-gold">MONARCH:</span> v4.3.0</span>
+                <span><span class="text-gold">MONARCH:</span> v4.4.0</span>
                 <span class="hidden md:inline"><span class="text-gray-500">STORAGE:</span> ISOLATED DEVICE DB</span>
             </div>
             <div class="flex items-center space-x-4">
                 <span>AUTHOR: <strong class="text-gray-200">STI-ITB CLASS DESK</strong></span>
                 <span class="text-gray-600">|</span>
-                <span id="current-time" class="text-gold">SEP 23, 2026 • 21:00:00 WIB</span>
+                <span id="current-time" class="text-gold">SEP 23, 2026 • 21:30:00 WIB</span>
             </div>
         </div>
 
@@ -149,18 +149,13 @@
                         <p class="text-xs text-gray-400 font-mono mt-1">Reading modules & executive study summaries</p>
                     </div>
 
-                    <!-- Search & Filter Bar -->
-                    <div class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
-                        <div class="relative flex-grow">
-                            <input type="text" id="materials-search" oninput="filterMaterials()" placeholder="SEARCH MODULES OR TAGS..." 
+                    <!-- Search Bar (Category Filter Removed) -->
+                    <div class="w-full md:w-80">
+                        <div class="relative">
+                            <input type="text" id="materials-search" oninput="filterMaterials()" placeholder="SEARCH MODULES..." 
                                 class="w-full bg-obsidian border border-obsidian-border text-white text-xs font-mono rounded px-3 py-2 pl-8 focus:outline-none focus:border-gold transition">
                             <svg class="w-3.5 h-3.5 text-gray-500 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
                         </div>
-                        <select id="tag-filter" onchange="filterMaterials()" class="bg-obsidian border border-obsidian-border text-xs font-mono text-gray-300 rounded px-3 py-2 focus:outline-none focus:border-gold">
-                            <option value="ALL">ALL CATEGORIES</option>
-                            <option value="ARCHITECTURE">SYSTEM ARCHITECTURE</option>
-                            <option value="FINANCE">FINANCIAL SYSTEMS</option>
-                        </select>
                     </div>
                 </div>
 
@@ -248,11 +243,11 @@
 
     </main>
 
-    <!-- READ MATERIAL OVERLAY (NEARLY COVERING FULL SCREEN: 94vw / 92vh) -->
+    <!-- READ MATERIAL OVERLAY (NEARLY COVERING FULL SCREEN) -->
     <div id="material-modal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-2 sm:p-4">
         <div class="bg-obsidian-card border border-gold/40 w-[96vw] sm:w-[94vw] h-[94vh] sm:h-[92vh] rounded-lg shadow-2xl flex flex-col overflow-hidden">
             
-            <!-- Modal Header -->
+            <!-- Modal Header (Category Tags Removed) -->
             <div class="p-4 sm:p-5 border-b border-obsidian-border flex justify-between items-center bg-obsidian shrink-0">
                 <div class="flex items-center space-x-3 truncate">
                     <span id="modal-tag" class="text-[10px] font-mono px-2 py-0.5 rounded bg-gold/10 text-gold border border-gold/30 shrink-0">MODULE TEMPLATE</span>
@@ -297,13 +292,11 @@
     </footer>
 
     <script>
-        // --- DATA ARCHITECTURE (2 TEMPLATE MATERIALS & 2 TEMPLATE QUIZZES) ---
+        // --- DATA ARCHITECTURE (CATEGORY FIELD REMOVED) ---
         const materialsData = [
             {
                 id: "MAT-01",
                 title: "Material Template 01: Core Systems Analysis",
-                category: "ARCHITECTURE",
-                tag: "SYSTEM ARCHITECTURE",
                 readTime: "8 min read",
                 date: "Sep 23, 2026",
                 summary: "Template layout structure for technical systems analysis, data flow paradigms, and architecture documentation.",
@@ -316,8 +309,6 @@
             {
                 id: "MAT-02",
                 title: "Material Template 02: Advanced Quantitative Methods",
-                category: "FINANCE",
-                tag: "FINANCIAL SYSTEMS",
                 readTime: "10 min read",
                 date: "Sep 23, 2026",
                 summary: "Template framework for mathematical modeling, statistical evaluation, and algorithmic execution notes.",
@@ -333,7 +324,6 @@
             {
                 id: "QZ-01",
                 title: "Assessment Quiz 01: Systems & Architecture",
-                difficulty: "INTERMEDIATE",
                 questions: [
                     {
                         q: "[Template Question 1] What is the primary focus when designing decoupled microservice architectures?",
@@ -362,7 +352,6 @@
             {
                 id: "QZ-02",
                 title: "Assessment Quiz 02: Quantitative Analytics",
-                difficulty: "ADVANCED",
                 questions: [
                     {
                         q: "[Template Question 1] In algorithmic matching engines, what does FIFO order prioritization ensure?",
@@ -488,15 +477,12 @@
         function renderMaterials() {
             const container = document.getElementById('materials-container');
             const searchValue = document.getElementById('materials-search').value.toLowerCase();
-            const tagValue = document.getElementById('tag-filter').value;
             const readMap = getReadStatusMap();
 
             const filtered = materialsData.filter(item => {
-                const matchesSearch = item.title.toLowerCase().includes(searchValue) || 
-                                     item.summary.toLowerCase().includes(searchValue) ||
-                                     item.id.toLowerCase().includes(searchValue);
-                const matchesTag = tagValue === 'ALL' || item.category === tagValue;
-                return matchesSearch && matchesTag;
+                return item.title.toLowerCase().includes(searchValue) || 
+                       item.summary.toLowerCase().includes(searchValue) ||
+                       item.id.toLowerCase().includes(searchValue);
             });
 
             if (filtered.length === 0) {
@@ -578,7 +564,7 @@
             const readMap = getReadStatusMap();
             const isRead = !!readMap[id];
 
-            document.getElementById('modal-tag').innerText = `${item.id} // ${item.tag}`;
+            document.getElementById('modal-tag').innerText = `${item.id} // ACADEMIC MODULE`;
             document.getElementById('modal-title').innerText = item.title;
 
             // Render Full Editable Typography Template layout
@@ -693,9 +679,6 @@
                                 ${hasTaken ? `<span>•</span><span class="text-emerald-400">LAST SCORE: ${savedScore}%</span>` : ''}
                             </div>
                         </div>
-                        <span class="text-[9px] font-mono px-1.5 py-0.5 rounded border border-gold/40 text-gold bg-gold/10">
-                            ${q.difficulty}
-                        </span>
                     </div>
                 `;
             }).join('');
