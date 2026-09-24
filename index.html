@@ -290,88 +290,47 @@
             {
                 id: "HB 1",
                 title: "Handbook 1 Summary: Dasar Keuangan dan Investasi Lengkap",
-                readTime: "15 mins",
+                readTime: "20 mins", // Or change to "PDF Reader"
                 date: "24/09/2026",
-                summary: "Materi lengkap mengenai evolusi uang, manajemen personal finance melalui Financial Pyramid, dan konsep investasi termasuk Compound Interest, instrumen, profil risiko, dan strategi.",
+                summary: "Dokumen asli materi Handbook Day 1 mengenai Sejarah Uang, Personal Finance, dan Investasi.",
                 takeaways: [
-                    "Evolusi uang berlandaskan pada kepercayaan (trust), mulai dari koin logam pada abad 7 SM hingga Cryptocurrency pada 2008[cite: 2].",
-                    "Piramida keuangan (Financial Pyramid) mencakup tiga tingkat: Keamanan Keuangan, Kenyamanan Keuangan, dan Distribusi Kekayaan[cite: 2].",
-                    "Investasi merupakan upaya melawan inflasi demi mencapai passive income dan kebebasan finansial[cite: 2].",
-                    "Penting untuk memahami profil risiko (Konservatif, Moderat, Agresif) serta mewaspadai investasi ilegal tanpa izin OJK/BAPPEBTI[cite: 2]."
+                    "Evolusi uang didasari oleh kepercayaan (trust).",
+                    "Piramida keuangan memprioritaskan Keamanan sebelum Kenyamanan dan Distribusi Kekayaan.",
+                    "Investasi bertujuan melawan inflasi untuk mencapai kebebasan finansial.",
+                    "Penting untuk menyesuaikan instrumen investasi dengan Profil Risiko."
                 ],
                 // Custom reader content specifically for HB 1
                 modalBodyHTML: `
                     <!-- EXECUTIVE SUMMARY CALLOUT -->
-                    <div class="p-4 bg-obsidian border border-gold/30 rounded-lg space-y-1">
+                    <div class="p-4 bg-obsidian border border-gold/30 rounded-lg space-y-1 mb-5">
                         <div class="text-[10px] font-mono text-gold font-bold uppercase tracking-widest">QUICK SUMMARY</div>
-                        <p class="text-xs text-gray-200 font-mono">Ringkasan menyeluruh mengenai sejarah alat tukar, pengelolaan keuangan pribadi (Financial Pyramid), serta penjabaran lengkap instrumen dan strategi investasi.</p>
+                        <p class="text-xs text-gray-200 font-mono">Panduan esensial yang mencakup sejarah uang, manajemen keuangan pribadi terstruktur, hingga pemahaman mendalam berbagai instrumen investasi, profil risiko, dan mitigasi penipuan.</p>
                     </div>
             
-                    <!-- SECTION 1 -->
-                    <div class="space-y-3 mt-4">
-                        <h1 class="font-serif text-2xl font-bold text-white tracking-tight border-b border-obsidian-border pb-2">
-                            1. Sejarah Uang
+                    <!-- PDF VIEWER SECTION -->
+                    <div class="space-y-3">
+                        <h1 class="font-serif text-xl font-bold text-white tracking-tight border-b border-obsidian-border pb-2">
+                            Document Viewer: Handbook Day 1
                         </h1>
-                        <p class="text-sm leading-relaxed text-gray-300">
-                            <strong class="text-white">Sejarah Uang:</strong> Evolusi uang mencerminkan pergeseran teknologi manusia, namun fondasi utamanya tetap tidak berubah, yakni kepercayaan (trust).
-                        </p>
-                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-300 bg-obsidian/60 p-4 rounded-lg border border-obsidian-border">
-                            <li><strong class="text-white">Logam (Abad 7 SM):</strong> Penggunaan koin electrum pertama kali tercatat di Lydia sebagai alat tukar terstandarisasi.</li>
-                            <li><strong class="text-white">Uang Kertas (Abad 17):</strong> Bermula dari nota kertas yang diterbitkan oleh goldsmith di Inggris sebagai bukti kepemilikan atas emas yang disimpan.</li>
-                            <li><strong class="text-white">Gold Standard (Abad 19):</strong> Sistem di mana nilai mata uang dikaitkan langsung dengan emas. Sistem ini efektif menekan inflasi namun membuat kebijakan moneter menjadi sangat kaku.</li>
-                            <li><strong class="text-white">Uang Fiat (1971):</strong> Dimulai dari peristiwa "Nixon Shock". Mata uang ini tidak didukung komoditas fisik, memberikan fleksibilitas tinggi namun rentan terhadap inflasi jika dicetak berlebihan.</li>
-                            <li><strong class="text-white">Crypto (2008):</strong> Satoshi Nakamoto memperkenalkan Bitcoin sebagai sistem uang elektronik peer-to-peer yang terdesentralisasi, menghilangkan kebutuhan akan perantara pihak ketiga.</li>
-                        </ul>
                         
-                    </div>
-            
-                    <!-- SECTION 2 -->
-                    <div class="space-y-3 mt-4">
-                        <h1 class="font-serif text-2xl font-bold text-white tracking-tight border-b border-obsidian-border pb-2">
-                            2. Personal Finance
-                        </h1>
-                        <p class="text-sm leading-relaxed text-gray-300">
-                            <strong class="text-white">Personal Finance:</strong> Personal finance adalah praktik strategis dalam mengelola sumber daya keuangan untuk mencapai tujuan hidup jangka pendek maupun jangka panjang.
-                        </p>
-                        <h2 class="font-serif text-lg font-semibold text-gold tracking-wide">
-                            Financial Pyramid
-                        </h2>
-                        <p class="text-sm leading-relaxed text-gray-300">
-                            <strong class="text-white"></strong> Struktur prioritas keuangan dibagi menjadi tiga tingkatan utama:
-                        </p>
-                        <ul class="list-disc list-inside space-y-2 text-sm text-gray-300 bg-obsidian/60 p-4 rounded-lg border border-obsidian-border">
-                            <li><strong class="text-white">Keamanan Keuangan:</strong> Fondasi dasar yang mencakup:<br><b>1. Budgeting:</b> Penerapan metode seperti 50/30/20, 40/30/20/10, atau penggunaan Spending Cap.<br><b>2. Dana Darurat:</b> Ketersediaan dana sebesar 6-12x pengeluaran bulanan yang disimpan pada instrumen likuid seperti Rekening bank, Reksa Dana Pasar Uang (RDPU), atau Deposito.<br><b>3. Asuransi:</b> Proteksi terhadap risiko kesehatan dan jiwa.</li>
-                            <li><strong class="text-white">Kenyamanan Keuangan:</strong> Pengembangan kekayaan melalui investasi yang disesuaikan dengan profil risiko individu.</li>
-                            <li><strong class="text-white">Distribusi Kekayaan:</strong> Perencanaan masa depan yang matang meliputi perencanaan warisan, dana pendidikan anak, dan rencana pensiun.</li>
-                    </div>
-            
-                    <!-- SECTION 3 -->
-                    <div class="space-y-3 mt-4">
-                        <h3 class="font-mono text-xs text-gold uppercase tracking-widest font-bold">
-                            1.2 Profil Risiko & Strategi
-                        </h3>
-                        <div class="bg-obsidian border border-obsidian-border rounded-lg p-4 font-mono text-xs text-emerald-400 space-y-1 overflow-x-auto">
-                            <div>// Profil Risiko Reference</div>
-                            <div class="text-gray-200">Konservatif (Risiko Rendah): RDPU, Deposito, Obligasi[cite: 2].</div>
-                            <div class="text-gray-200">Moderat: RDPT, Saham Dividen[cite: 2].</div>
-                            <div class="text-gray-200">Agresif: Crypto, Reksa Dana Saham, Saham Third Liner[cite: 2].</div>
-                            
-                            <div class="mt-3">// Strategi Eksekusi</div>
-                            <div class="text-gray-200">1. DCA (Dollar Cost Averaging): Investasi rutin secara berkala[cite: 2].</div>
-                            <div class="text-gray-200">2. Lump Sum: Investasi modal besar dalam satu waktu di awal[cite: 2].</div>
-                            <div class="text-gray-200">3. Diversifikasi: Menyebar modal ke berbagai aset untuk meminimalisir risiko[cite: 2].</div>
-                            <div class="text-gray-200">4. Value Investing: Mencari perusahaan undervalued seperti metode Lo Kheng Hong[cite: 2].</div>
-            
-                            <div class="text-red-400 mt-3">// Peringatan: Waspadai penipuan investasi (tanpa izin OJK/BAPPEBTI, untung tak masuk akal, operasional tidak transparan)[cite: 2].</div>
+                        <!-- Iframe Container -->
+                        <div class="w-full h-[600px] rounded-lg overflow-hidden border border-obsidian-border bg-black/50">
+                            <!-- IMPORTANT: Replace the 'src' value with the actual local path or URL to your PDF file -->
+                            <iframe 
+                                src="./assets/Summary_HANDBOOK_DAY_1.pdf" 
+                                width="100%" 
+                                height="100%" 
+                                class="w-full h-full border-none"
+                                title="Handbook Day 1 PDF Document">
+                            </iframe>
                         </div>
                     </div>
-            
-                    <!-- SECTION 4 -->
-                    <div class="p-4 bg-amber-glow border-l-4 border-gold rounded-r-lg space-y-1 mt-4">
-                        <h4 class="font-serif text-sm font-bold text-gold">Note: Compound Interest</h4>
-                        <p class="text-xs text-gray-300">
-                            Compound Interest (Bunga Majemuk) dihitung dari modal awal ditambah akumulasi bunga periode sebelumnya[cite: 2]. Rumus keajaiban finansial ini adalah A = P(1 + r/n)^(nt), dimana A adalah Hasil akhir, P adalah Modal awal, r adalah Suku bunga, n adalah frekuensi penggabungan per tahun, dan t adalah waktu dalam tahun.
-                        </p>
+                    
+                    <!-- OPTIONAL: FALLBACK DOWNLOAD LINK -->
+                    <div class="mt-3 text-right">
+                        <a href="./assets/Summary_HANDBOOK_DAY_1.pdf" target="_blank" class="text-[10px] font-mono text-gold hover:text-white transition-colors duration-200 uppercase tracking-widest">
+                            [ Open PDF in New Tab ]
+                        </a>
                     </div>
                 `
             },
